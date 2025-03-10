@@ -1,12 +1,14 @@
 interface Props {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     className?: string;
-    onClik?: () => void;
+    onClick?: () => void;
+    title: React.ReactNode;
 }
 
-export const Card = ({ children, className, onClik }: Props) => {
+export const Card = ({ children, className, onClick, title }: Props) => {
     return (
-        <div className={`rounded-lg border border-gray-200 bg-white p-4 shadow-sm ${className}`} onClick={onClik}>
+        <div className={`cursor-pointer rounded-lg border border-gray-200 bg-white p-4 shadow-sm ${className}`} onClick={onClick}>
+            {title}
             {children}
         </div>
     );

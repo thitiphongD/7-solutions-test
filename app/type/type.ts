@@ -1,5 +1,6 @@
+export type CategoryType = 'Fruit' | 'Vegetable';
 export interface ProductType {
-    type: 'Fruit' | 'Vegetable';
+    type: CategoryType;
     name: string;
 }
 
