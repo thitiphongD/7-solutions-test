@@ -1,9 +1,8 @@
 import React from 'react'
+import AssignmentServer from '../components/AssignmentServer'
 
 const AssignmentPage = () => {
-    return (
-        <div>AssignmentPage</div>
-    )
+    return <AssignmentServer />
 }
 
 export default AssignmentPage

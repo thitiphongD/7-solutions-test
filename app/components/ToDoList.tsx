@@ -61,7 +61,7 @@ const ToDoList = () => {
             <Card title={allItems}>
                 <div className="space-y-1">
                     {items.length === 0 ? (
-                        <p className="text-gray-500">No items in the list</p>
+                        <p className="text-gray-500">No items</p>
                     ) : (
                         items.map((item, index) => (
                             <div
@@ -78,7 +78,7 @@ const ToDoList = () => {
             </Card>
             <Card
                 title={titleVegetable}
-                className='border-orange-200 shadow-md'
+                className='border-green-200 shadow-md'
                 onClick={() => handleCategoryClick("Vegetable")}
             >
                 <div className="space-y-1">
@@ -93,7 +93,7 @@ const ToDoList = () => {
             </Card>
             <Card
                 title={titleFruit}
-                className='border-green-200 shadow-md'
+                className='border-orange-200 shadow-md'
                 onClick={() => handleCategoryClick("Fruit")}
             >
                 <div className="space-y-1">
