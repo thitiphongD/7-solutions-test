@@ -6,11 +6,15 @@ This project is a Todo application built with [Next.js](https://nextjs.org) that
 
 ### 1. Auto Delete Todo List
 
-The application features a Todo list with an automatic deletion feature that removes todos after a specified time period. This demonstrates state management, timers, and React component lifecycle handling.
+The application features a Todo list with an automatic deletion feature that removes todos after a specified time period. Users can view all items, or filter by categories (fruits and vegetables).
 
 ### 2. Create Data from API
 
-The application fetches and displays data from external APIs, showing how to integrate external data sources into a Next.js application. It includes handling loading states, errors, and displaying the fetched data in a user-friendly way.
+The application fetches and displays data from external APIs
+
+## Live Demo
+
+The application is deployed and available at: [https://7-solutions-test-five.vercel.app/](https://7-solutions-test-five.vercel.app/)
 
 ## Getting Started
 
@@ -45,16 +49,9 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 - `/app` - Contains the main application code
 - `/components` - Reusable UI components
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
 ## Deploy on Vercel
+
+This project is already deployed on Vercel at: [https://7-solutions-test-five.vercel.app/](https://7-solutions-test-five.vercel.app/)
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
