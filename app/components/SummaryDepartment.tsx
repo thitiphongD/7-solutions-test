@@ -3,7 +3,7 @@ import React from 'react'
 import { getUsers } from '@/services/user';
 import { SeparatorLine } from './Seperator';
 import DepartmentCard from './DepartmentCard';
-const AssignmentServer = async () => {
+const SummaryDepartment = async () => {
     const data = await getUsers();
 
     return (
@@ -25,4 +25,4 @@ const AssignmentServer = async () => {
     );
 };
 
-export default AssignmentServer
+export default SummaryDepartment;

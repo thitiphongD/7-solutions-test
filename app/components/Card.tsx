@@ -5,9 +5,20 @@ interface Props {
     title: React.ReactNode;
 }
 
-export const Card = ({ children, className, onClick, title }: Props) => {
+export const Card = ({
+    children,
+    className,
+    onClick,
+    title }: Props
+) => {
     return (
-        <div className={`cursor-pointer rounded-lg border border-gray-200 bg-white p-4 shadow-sm ${className}`} onClick={onClick}>
+        <div
+            className={`cursor-pointer rounded-lg border 
+            border-gray-200
+            p-4 shadow-sm 
+            ${className}`}
+            onClick={onClick}
+        >
             {title}
             {children}
         </div>

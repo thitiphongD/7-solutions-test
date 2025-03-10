@@ -1,8 +1,8 @@
 import React from 'react'
-import AssignmentServer from '../components/AssignmentServer'
+import SummaryDepartment from '../components/SummaryDepartment'
 
 const AssignmentPage = () => {
-    return <AssignmentServer />
+    return <SummaryDepartment />
 }
 
-export default AssignmentPage
+export default AssignmentPage;
