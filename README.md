@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Todo Application
+
+This project is a Todo application built with [Next.js](https://nextjs.org) that demonstrates two main features:
+
+## Project Assignments
+
+### 1. Auto Delete Todo List
+
+The application features a Todo list with an automatic deletion feature that removes todos after a specified time period. This demonstrates state management, timers, and React component lifecycle handling.
+
+### 2. Create Data from API
+
+The application fetches and displays data from external APIs, showing how to integrate external data sources into a Next.js application. It includes handling loading states, errors, and displaying the fetched data in a user-friendly way.
 
 ## Getting Started
 
@@ -19,6 +31,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Technologies Used
+
+- Next.js
+- React
+- TypeScript
+- TailwindCSS
+- External APIs
+
+## Project Structure
+
+- `/app` - Contains the main application code
+- `/components` - Reusable UI components
 
 ## Learn More
 
