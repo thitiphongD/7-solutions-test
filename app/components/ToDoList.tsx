@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card } from './Card'
 import { CategoryType, ProductType } from '../type/type';
 import { products } from '../data/products';
@@ -36,6 +36,37 @@ const ToDoList = () => {
         }
     }
 
+    const timerAutoDelete = (item: ProductType, type: CategoryType, index: number): NodeJS.Timeout => {
+        return setTimeout(() => {
+            setItems(prev => [...prev, item]);
+            setSelectItems(prev => ({
+                ...prev,
+                [type]: prev[type].filter((_, i) => i !== index)
+            }));
+        }, 5000);
+    };
+
+    useEffect(() => {
+        const fruitTimers: NodeJS.Timeout[] = [];
+        const vegetableTimers: NodeJS.Timeout[] = [];
+
+
+        selectItems.Fruit.forEach((item, index) => {
+            const timer = timerAutoDelete(item, "Fruit", index);
+            fruitTimers.push(timer);
+        });
+
+        selectItems.Vegetable.forEach((item, index) => {
+            const timer = timerAutoDelete(item, "Vegetable", index);
+            vegetableTimers.push(timer);
+        });
+
+        return () => {
+            fruitTimers.forEach(timer => clearTimeout(timer));
+            vegetableTimers.forEach(timer => clearTimeout(timer));
+        };
+    }, [selectItems]);
+
     const allItems = (
         <h2 className="text-xl font-semibold mb-4 text-gray-600 flex items-center">
             All Items
@@ -44,15 +75,13 @@ const ToDoList = () => {
 
     const titleFruit = (
         <h2 className="text-xl font-semibold mb-4 text-orange-600 flex items-center">
-            <span className="mr-2">🍎</span>
-            Fruits
+            <span className="mr-2">🍎</span> Fruits
         </h2>
     )
 
     const titleVegetable = (
         <h2 className="text-xl font-semibold mb-4 text-green-600 flex items-center">
-            <span className="mr-2">🥦</span>
-            Vegetables
+            <span className="mr-2">🥦</span> Vegetables
         </h2>
     )
 
@@ -64,14 +93,16 @@ const ToDoList = () => {
                         <p className="text-gray-500">No items</p>
                     ) : (
                         items.map((item, index) => (
-                            <div
+                            <button
                                 key={index}
                                 onClick={() => handleItemClick(item)}
+                                className="w-full text-left cursor-pointer"
+                                aria-label={`Select ${item.name}`}
                             >
                                 <ProductItem
                                     item={item}
                                 />
-                            </div>
+                            </button>
                         ))
                     )}
                 </div>
