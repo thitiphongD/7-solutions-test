@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Card } from './Card'
 import { CategoryType, ProductType } from '../type/type';
 import { products } from '../data/products';
@@ -18,16 +18,41 @@ const ToDoList = () => {
     const handleItemClick = (item: ProductType) => {
         setItems(prev => prev.filter(i => !(i.name === item.name && i.type === item.type)));
         if (item.type === "Fruit" || item.type === "Vegetable") {
-            setSelectItems(prev => ({
-                ...prev,
-                [item.type]: [...prev[item.type], item],
-            }));
+            setSelectItems(prev => {
+                const newItems = {
+                    ...prev,
+                    [item.type]: [...prev[item.type], item],
+                };
+
+                // Start timer for the newly added item
+                const timer = setTimeout(() => {
+                    setItems(prevItems => [...prevItems, item]);
+                    setSelectItems(prevItems => ({
+                        ...prevItems,
+                        [item.type]: prevItems[item.type].filter(i => !(i.name === item.name && i.type === item.type))
+                    }));
+                }, 5000);
+
+                // Store timer ID in the item for cleanup
+                return {
+                    ...newItems,
+                    [item.type]: newItems[item.type].map(i =>
+                        i.name === item.name && i.type === item.type
+                            ? { ...i, timerId: timer }
+                            : i
+                    )
+                };
+            });
         }
     };
 
     const handleCategoryClick = (category: CategoryType) => {
         if (selectItems[category].length > 0) {
             const itemToMove = selectItems[category][0];
+
+            if (itemToMove.timerId) {
+                clearTimeout(itemToMove.timerId);
+            }
             setItems(prev => [...prev, itemToMove]);
             setSelectItems(prev => ({
                 ...prev,
@@ -35,37 +60,6 @@ const ToDoList = () => {
             }));
         }
     }
-
-    const timerAutoDelete = (item: ProductType, type: CategoryType, index: number): NodeJS.Timeout => {
-        return setTimeout(() => {
-            setItems(prev => [...prev, item]);
-            setSelectItems(prev => ({
-                ...prev,
-                [type]: prev[type].filter((_, i) => i !== index)
-            }));
-        }, 5000);
-    };
-
-    useEffect(() => {
-        const fruitTimers: NodeJS.Timeout[] = [];
-        const vegetableTimers: NodeJS.Timeout[] = [];
-
-
-        selectItems.Fruit.forEach((item, index) => {
-            const timer = timerAutoDelete(item, "Fruit", index);
-            fruitTimers.push(timer);
-        });
-
-        selectItems.Vegetable.forEach((item, index) => {
-            const timer = timerAutoDelete(item, "Vegetable", index);
-            vegetableTimers.push(timer);
-        });
-
-        return () => {
-            fruitTimers.forEach(timer => clearTimeout(timer));
-            vegetableTimers.forEach(timer => clearTimeout(timer));
-        };
-    }, [selectItems]);
 
     const allItems = (
         <h2 className="text-xl font-semibold mb-4 text-gray-600 flex items-center">

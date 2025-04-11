@@ -1,7 +1,9 @@
 export type CategoryType = 'Fruit' | 'Vegetable';
+
 export interface ProductType {
     type: CategoryType;
     name: string;
+    timerId?: NodeJS.Timeout;
 }
 
 export interface MenuType {
