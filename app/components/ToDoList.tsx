@@ -15,7 +15,7 @@ const ToDoList = () => {
         Vegetable: [],
     });
 
-    const handleItemClick = (item: ProductType) => {
+    const handleItem = (item: ProductType) => {
         setItems(prev => prev.filter(i => !(i.name === item.name && i.type === item.type)));
         if (item.type === "Fruit" || item.type === "Vegetable") {
             setSelectItems(prev => {
@@ -46,7 +46,7 @@ const ToDoList = () => {
         }
     };
 
-    const handleCategoryClick = (category: CategoryType) => {
+    const handleCategory = (category: CategoryType) => {
         if (selectItems[category].length > 0) {
             const itemToMove = selectItems[category][0];
 
@@ -89,7 +89,7 @@ const ToDoList = () => {
                         items.map((item, index) => (
                             <button
                                 key={index}
-                                onClick={() => handleItemClick(item)}
+                                onClick={() => handleItem(item)}
                                 className="w-full text-left cursor-pointer"
                                 aria-label={`Select ${item.name}`}
                             >
@@ -104,7 +104,7 @@ const ToDoList = () => {
             <Card
                 title={titleVegetable}
                 className='border-green-200 shadow-md'
-                onClick={() => handleCategoryClick("Vegetable")}
+                onClick={() => handleCategory("Vegetable")}
             >
                 <div className="space-y-1">
                     {selectItems.Vegetable.length === 0 ? (
@@ -119,7 +119,7 @@ const ToDoList = () => {
             <Card
                 title={titleFruit}
                 className='border-orange-200 shadow-md'
-                onClick={() => handleCategoryClick("Fruit")}
+                onClick={() => handleCategory("Fruit")}
             >
                 <div className="space-y-1">
                     {selectItems.Fruit.length === 0 ? (
